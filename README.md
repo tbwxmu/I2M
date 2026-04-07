@@ -1,4 +1,4 @@
-# I2M (Image to Molecule) - Minimal Edition
+# I2M 
 
 A streamlined deep learning model for converting molecular structure images to chemical structures using DETR architecture.
 
