@@ -8,7 +8,6 @@ evaluate/reference/*.py  # Large reference implementations
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
 .Python
 build/
 develop-eggs/
