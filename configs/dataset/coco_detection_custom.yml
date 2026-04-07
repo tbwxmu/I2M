@@ -1,0 +1,39 @@
+# Sample Configuration for Custom Training
+# Copy this file and modify paths to match your dataset
+
+task: detection
+
+# Training data configuration
+train_dataloader:
+  dataset:
+    type: CocoDetection
+    img_folder: data/custom_training/images/train  # ← CHANGE THIS to your training images path
+    ann_file: data/custom_training/annotations/train.json  # ← CHANGE THIS to your training annotations
+    transforms:
+      type: Compose
+      ops: ~
+  shuffle: True
+  num_workers: 8  # Adjust based on your CPU cores
+  batch_size: 16  # Adjust based on your GPU memory (reduce if OOM)
+
+# Validation data configuration
+val_dataloader:
+  dataset:
+    type: CocoDetection
+    img_folder: data/custom_training/images/val  # ← CHANGE THIS to your validation images path
+    ann_file: data/custom_training/annotations/val.json  # ← CHANGE THIS to your validation annotations
+    transforms:
+      type: Compose
+      ops: ~
+  shuffle: False
+  num_workers: 8
+  batch_size: 16
+
+# Number of classes (atoms/bonds types you want to detect)
+# Default is 91 for standard molecular structures
+num_classes: 24
+
+# Evaluation metric
+evaluator:
+  type: CocoEvaluator
+  iou_types: ['bbox', ]

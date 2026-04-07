@@ -1,0 +1,40 @@
+task: detection
+
+num_classes: 24
+remap_mscoco_category: False
+
+train_dataloader:
+  type: DataLoader
+  dataset:
+    type: CocoDetection
+
+    # 请根据实际情况修改以下路径
+    img_folder: data/custom_training/images/train
+    ann_file: data/custom_training/annotations/train_24cls.json
+
+    transforms:
+      type: Compose
+      ops: ~
+  shuffle: True
+  batch_size: 4
+  num_workers: 4
+  drop_last: True
+
+
+val_dataloader:
+  type: DataLoader
+  dataset:
+    type: CocoDetection
+
+    # 请根据实际情况修改以下路径
+    img_folder: data/custom_training/images/val
+    ann_file: data/custom_training/annotations/val_24cls.json
+
+    transforms:
+      type: Compose
+      ops: ~
+
+  shuffle: False
+  batch_size: 4
+  num_workers: 4
+  drop_last: False
