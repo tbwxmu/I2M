@@ -200,8 +200,8 @@ def main():
 
     for da in das:
         print(da)
-        csv_path = f"/recovery/bo/pys/i2m_data/real/{da}.csv"
-        acs_dir = f"/recovery/bo/pys/i2m_data/real/{da}"
+        csv_path = f"/recovery/bo/pys/i2m_data/real/{da}.csv"#edit with your path
+        acs_dir = f"/recovery/bo/pys/i2m_data/real/{da}"##edit with your path
 
         df = pd.read_csv(csv_path, header=0)
         if args.number is not None:
