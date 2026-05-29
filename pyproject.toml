@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "I2M"
+version = "0.1.0"
+description = "Image-to-molecule training and evaluation toolkit based on a DETR-style architecture."
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+license = "PolyForm-Noncommercial-1.0.0"
+license-files = ["LICENSE"]
+keywords = ["chemistry", "ocr", "molecule", "detr", "deep-learning"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Scientific/Engineering :: Chemistry",
+]
+dependencies = [
+  "torch",
+  "torchvision",
+  "torchaudio",
+  "numpy",
+  "pandas",
+  "Pillow",
+  "PyYAML",
+  "scipy",
+  "scikit-learn",
+  "scikit-image",
+  "matplotlib",
+  "tqdm",
+  "opencv-python",
+  "rdkit",
+  "SmilesPE",
+]
+
+[project.optional-dependencies]
+eval = [
+  "pycocotools",
+]
+ocr = [
+  "paddleocr",
+  "cairosvg",
+]
+dev = [
+  "build",
+  "twine",
+]
+
+[project.urls]
+Homepage = "https://github.com/tbwxmu/I2M"
+Repository = "https://github.com/tbwxmu/I2M"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src", "src.*"]
+
+[tool.setuptools.package-data]
+"src.solver" = ["*.so"]

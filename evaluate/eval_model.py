@@ -1,9 +1,12 @@
 import os,sys
 import argparse
-model_usedpath='/recovery/bo/pys/I2M'
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+model_usedpath = str(REPO_ROOT)
 sys.path.append(model_usedpath)
-home='/recovery/bo/pys/I2M'
-bmd=f'/recovery/bo/pys/I2M/weights/I2M_R4.onnx'
+home = str(REPO_ROOT)
+bmd = str(REPO_ROOT / 'weights' / 'I2M_R4.onnx')
 parser = argparse.ArgumentParser()
 parser.add_argument('--config', '-c', type=str, default=f'{home}/configs/moldetr/moldetr_r50vd_6x_coco.yml')
 parser.add_argument('--resume', '-r', type=str, default=f'{bmd}')
@@ -13,6 +16,7 @@ parser.add_argument('--amp', default=False,)
 parser.add_argument('--dataname', '-da', type=str, default=None)
 parser.add_argument('--gpuid', '-gi', type=str, default=None)
 parser.add_argument('--number', '-n', type=str, default=None)
+parser.add_argument('--data-root', type=str, default=str(REPO_ROOT / 'data' / 'inference'))
 args, unknown = parser.parse_known_args()
 print(args)
 if args.gpuid:
@@ -441,7 +445,7 @@ if ac_b:
     view_dirb=f"{view_check_dir}/{da}_b"
     dst_dirac =view_dirac
     dst_dirb =view_dirb
-src_dir='/recovery/bo/pys/i2m_data/real'
+src_dir=args.data_root
 src_file = os.path.join(src_dir, f"{da}.csv")
 df = pd.read_csv(src_file)
 print(f"src_file:\n{src_file}")
@@ -508,7 +512,7 @@ if os.path.exists(prefilter_none_mol_csv):
     )
 else:
     print(f"No prefilter none-molecule CSV found at: {prefilter_none_mol_csv}")
-real_data_dir = os.path.join('/recovery/bo/pys/i2m_data/real', da)
+real_data_dir = os.path.join(src_dir, da)
 source_ac_dir = os.path.join(src_dir, f"{da}_ac")
 target_ac_dir = view_dirac2
 copied_from_real = 0

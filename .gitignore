@@ -1,5 +1,6 @@
 # Data directories
-data/
+data/*
+!data/README.md
 output/
 evaluate/results/
 evaluate/reference/*.py  # Large reference implementations
