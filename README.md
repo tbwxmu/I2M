@@ -57,7 +57,6 @@ Current packaging constraints:
 
 - Python `3.10` only
 - Linux only
-- The package includes a prebuilt binary module: `src/solver/det_engine.cpython-310-x86_64-linux-gnu.so`
 - `paddlepaddle` is not installed automatically because the correct package depends on your CUDA / platform combination
 
 ## Inference
@@ -66,7 +65,7 @@ Current packaging constraints:
 python infer_single.py test/test_001.png
 ```
 
-Sample test images are included under [`test/`](/recovery/bo/pys/I2M/test), for example:
+Sample test images are included under [`test/`](./test), for example:
 
 ```bash
 python infer_single.py test/test_001.png
@@ -91,12 +90,13 @@ python evaluate/eval_model.py \
 
 This script is designed for dataset evaluation rather than ad hoc single-image use. It expects a CSV file plus an image directory under `--data-root`.
 
-## Data
+## Data & PyTorch training checkpoints 
 
 Download the official Zenodo datasets and place the extracted files under the repository's [`data/`](/recovery/bo/pys/I2M/data) directory.
 
-- Training dataset: [Zenodo record 15823641](https://zenodo.org/records/15823641)
+- Training dataset: [Zenodo record 15823641](https://zenodo.org/records/15823641)， 
 - Testing dataset: [Zenodo record 16034987](https://zenodo.org/records/16034987)
+- PyTorch training checkpoints: [Zenodo record 20442887](https://zenodo.org/records/20442887)
 
 Recommended layout:
 
