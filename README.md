@@ -47,7 +47,7 @@ pip install -e .
 pip install ".[eval,ocr]"
 ```
 
-If you want to install directly from GitHub after the repository is published:
+you can install directly from GitHub as the repository is published:
 
 ```bash
 pip install "git+https://github.com/tbwxmu/I2M.git"
@@ -114,7 +114,6 @@ I2M/
 Suggested usage:
 
 - Put the extracted training dataset under `data/train/`
-- Put the extracted testing dataset under `data/test/`
 - Use `data/test/` for the CSV and image folders consumed by `evaluate/eval_model.py`
 
 If you evaluate custom benchmark splits with [`evaluate/eval_model.py`](/recovery/bo/pys/I2M/evaluate/eval_model.py), point `--data-root` to the directory containing the prepared CSV and image folders. The directory conventions are also documented in [`data/README.md`](/recovery/bo/pys/I2M/data/README.md).
@@ -126,44 +125,11 @@ If you evaluate custom benchmark splits with [`evaluate/eval_model.py`](/recover
 - Data download helper: [`evaluate/download_data_guide.sh`](/recovery/bo/pys/I2M/evaluate/download_data_guide.sh)
 - Supported benchmark datasets include ACS, JPO, UOB, USPTO, CLEF, Staker, and ChemVLOCR
 
-## Manual Installation
-
-If `setup_i2m.sh` does not work, install the main dependencies manually:
-
-```bash
-# Configure pip mirror (China users)
-pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-
-# Install core dependencies
-conda install -y pytorch torchvision torchaudio pyyaml -c conda-forge
-conda install -y rdkit pandas numpy opencv pillow scipy scikit-learn matplotlib tqdm
-
-# Install additional packages
-pip install paddleocr paddlepaddle-gpu SmilesPE cairosvg pycocotools
-```
-
-## Publish to PyPI
-
-Before uploading, make sure the package name `I2M` is still available on PyPI.
-
-```bash
-# 1. Build source + wheel
-python -m build
-
-# 2. Check the generated artifacts
-python -m twine check dist/*
-
-# 3. Upload to TestPyPI first
-python -m twine upload --repository testpypi dist/*
-
-# 4. Upload to PyPI
-python -m twine upload dist/*
-```
-
-If the name `I2M` is already taken on PyPI, change `project.name` in [`pyproject.toml`](/recovery/bo/pys/I2M/pyproject.toml) to a unique distribution name such as `i2m-moldetr`.
-
----
 
 ## License
 
-PolyForm Noncommercial 1.0.0. See [`LICENSE`](/recovery/bo/pys/I2M/LICENSE) for details. Commercial use is not permitted under the current license.
+This project is released under the common noncommercial software license **PolyForm Noncommercial 1.0.0**. See [`LICENSE`](/recovery/bo/pys/I2M/LICENSE) for the full terms.
+
+Commercial use is not permitted under the current license.
+
+If you are interested in commercial licensing or collaboration, please contact `wuzxmu@gmail.com`.
