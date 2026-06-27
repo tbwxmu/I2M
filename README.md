@@ -1,6 +1,8 @@
 # I2M
 
 I2M converts molecular structure images into chemical structure strings.
+No-code web app:
+- BondlifeAI: https://www.bondlifeai.cn/
 
 ## Quick Start
 
@@ -23,9 +25,6 @@ python infer_single.py test/test_001.png
 ```
 
 The command prints the predicted SMILES string to stdout.
-
-No-code web app:
-- BondlifeAI: https://www.bondlifeai.cn/
 
 ## Installation
 
